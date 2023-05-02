@@ -26,64 +26,14 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-        User::create([
-            'nik' => '3525015201880002',
-            'name' => 'Muhammad Rajaswa Raihanu Bhamakerti',
-            'username' => 'rajaswa',
-            'email' => 'rajaswa@example.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '081311888098',
-            'lvl' => 'admin',
-        ]);
-
-        User::create([
-            'nik' => '3525011506830001',
-            'name' => 'Muhammad Hilmy',
-            'username' => 'hilmy',
-            'email' => 'muhil@example.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '081311223344',
-            'lvl' => 'admin',
-        ]);
-
-        User::create([
-            'nik' => '3525010510930001',
-            'name' => 'Ahmad Bambang Hermawan',
-            'username' => 'abah',
-            'email' => 'abah@example.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '081317152014',
-            'lvl' => 'petugas',
-        ]);
-
-        User::create([
-            'nik' => fake('id_ID')->nik(),
-            'name' => 'Muhammad Alif Febrianto',
-            'username' => 'alif',
-            'email' => 'alif@example.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '081317152015',
-            'lvl' => 'masyarakat',
-        ]);
-
-        User::create([
-            'nik' => fake('id_ID')->nik(),
-            'name' => 'Rido Dwi Sang Aji',
-            'username' => 'rido',
-            'email' => 'rido@example.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '081317152016',
-            'lvl' => 'masyarakat',
-        ]);
-
+        
         User::create([
             'nik' => fake('id_ID')->nik(),
             'name' => 'Budi Setia',
             'username' => 'budi',
             'email' => 'budisetia@example.com',
             'password' => Hash::make('12345678'),
-            'telp' => '081317152017',
+            'telp' => '111222211',
             'lvl' => 'masyarakat',
         ]);
 
