@@ -6,8 +6,8 @@
         <img class="border-4 h-20 p-1 sm:h-60 -rotate-12 border-white border-dashed rounded-md" src="{{ asset('img/logo-e-Lapor-Sehati.png') }}" alt="tangspor-logo.png">
 
         <div>
-            <p class="font-bold text-4xl">DINKES KAB PENGKAYANG</p>
-            <small class="sm:text-xl">DINKES KAB PENGKAYANG SELATAN MELAPOR!</small>
+            <p class="font-bold text-4xl">DINKES KAB BENGKAYANG</p>
+            <small class="sm:text-xl">"E-Lapor Sehati</small>
         </div>
 
         <i class="absolute sm:static top-8 right-7 h-6 sm:h-80 sm:w-60 fa-solid fa-comments"></i>
