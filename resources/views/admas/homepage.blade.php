@@ -7,7 +7,7 @@
 
         <div>
             <p class="font-bold text-4xl">DINKES KAB BENGKAYANG</p>
-            <small class="sm:text-xl">"E-Lapor Sehati</small>
+            <small class="sm:text-xl">E-Lapor Sehati</small>
         </div>
 
         <i class="absolute sm:static top-8 right-7 h-6 sm:h-80 sm:w-60 fa-solid fa-comments"></i>
