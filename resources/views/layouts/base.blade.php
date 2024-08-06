@@ -26,7 +26,7 @@
         <div class="drawer-side">
           <label for="my-drawer" class="drawer-overlay fixed w-full h-full"></label>
           <ul class="menu h-full overflow-x-auto fixed p-4 bg-slate-900 text-white">
-              <label for="my-drawer" class="text-4xl font-bold text-center mb-3 bg-red-700 p-3 rounded-md"><img class="inline-block -mt-2 h-10 border-2 border-white rounded" src="{{ asset('img/logo-tangspor.png') }}" alt="logo-tangspor.png"> TANGSPOR!</label>
+              <label for="my-drawer" class="text-4xl font-bold text-center mb-3 bg-red-700 p-3 rounded-md"><img class="inline-block -mt-2 h-10 border-2 border-white rounded" src="{{ asset('img/logo-tangspor.png') }}" alt="logo-tangspor.png"> ADUAN MASYARAKAT!</label>
             <!-- Sidebar content here -->
             <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/"><div class="w-5 mr-1"><i class="fa-solid fa-house"></i></div> Beranda</a></li>
             

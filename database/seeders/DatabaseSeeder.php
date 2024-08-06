@@ -29,42 +29,42 @@ class DatabaseSeeder extends Seeder
         
         User::create([
             'nik' => fake('id_ID')->nik(),
-            'name' => 'Budi Setia',
-            'username' => 'budi',
-            'email' => 'budisetia@example.com',
+            'name' => 'candra',
+            'username' => 'candra',
+            'email' => 'candra@isb.com',
             'password' => Hash::make('12345678'),
             'telp' => '111222211',
-            'lvl' => 'masyarakat',
+            'lvl' => 'admin',
         ]);
 
         User::factory(20)->create();
 
         Kecamatan::create([
-            'kecamatan' => 'Ciputat',
+            'kecamatan' => 'Bengkayang',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Ciputat Timur',
+            'kecamatan' => 'Ledo',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Pamulang',
+            'kecamatan' => 'Seluas',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Pondok Aren',
+            'kecamatan' => 'Jagoi Babang',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Serpong',
+            'kecamatan' => 'Montrado',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Serpong Utara',
+            'kecamatan' => 'Sungai Raya',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Setu',
+            'kecamatan' => 'bumi Emas',
         ]);
 
         // Pengaduan::factory(50)->create();

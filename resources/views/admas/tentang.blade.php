@@ -14,7 +14,7 @@
   <div class="hero-content text-center">
     <div class="max-w-md bg-white border border-black p-3 rounded-xl relative after:block after:h-full after:w-full after:bg-slate-200 after:-z-10 after:border after:top-4 after:border-black after:absolute after:rounded-xl">
             <h1 class="text-5xl font-bold bg-red-600 p-3 rounded-md text-white">Tentang Kami</h1>
-              <p class="py-6">TANGSPOR atau Tangerang Selatan Melapor Dibuat pada tahun 2023 oleh Muhammad Rajaswa Raihanu Bhamakerti.</p>
+              <p class="py-6">Aduan Masyarakat DINKES Melapor Dibuat pada tahun 2024.</p>
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@
       <div class="hover:top-28 hover:-rotate-3 transition-all  bg-slate-400 w-80 rounded-xl p-5 border-2 shadow-lg shadow-slate-600 border-slate-800 overflow-hidden hidden lg:block relative sm:left-8 sm:top-32 sm:absolute">
         <div class="bg-white absolute top-0 w-full left-0 flex z-50">
           
-          <p class="font-bold p-3"><span class="bg-slate-800 p-1 h-1 w-5 rounded-full"></span> Group Warga Tangsel</p>
+          <p class="font-bold p-3"><span class="bg-slate-800 p-1 h-1 w-5 rounded-full"></span> Group Warga DINKES BENGKAYANG</p>
         </div>
         <div class="chat chat-start">
           <div class="chat-image avatar">
@@ -31,9 +31,9 @@
             </div>
           </div>
           <div class="chat-header">
-            Rajaswa
+          DINKES
           </div>
-          <div class="chat-bubble">Semoga dengan website ini warga Tangsel menjadi lebih makmur!!!</div>
+          <div class="chat-bubble">Semoga dengan website ini warga Kabupaten Bengkayang menjadi lebih makmur!!!</div>
         </div>
       
         <div class="">
@@ -90,7 +90,7 @@
 
     <div class="sm:mt-10">
       <h3 class="font-bold text-4xl ">Misi Kami</h3>
-      <p class="text-md">mempermudah warga Tangerang Selatan dalam melaporkan permasalahan yang melibatkan kenyamanan dan keamanan publik.</p>
+      <p class="text-md">mempermudah warga KABUPATEN BENGKAYANG dalam melaporkan permasalahan yang melibatkan kenyamanan dan keamanan publik.</p>
     </div>
   
   </div>
@@ -99,8 +99,8 @@
     <div class="sm:ml-5">
       <h3 class="text-4xl font-bold">Kontak Kami</h3>
       <div class="mockup-code w-fit">
-        <pre data-prefix="1"><code>Rajaswa: 081311888098</code></pre> 
-        <pre data-prefix="2"><code>Hilmy  : 081311223344</code></pre> 
+        <pre data-prefix="1"><code>ISB</code></pre> 
+        <pre data-prefix="2"><code>ISB</code></pre> 
       </div>
     </div>
 
@@ -109,27 +109,27 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
 
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-instagram"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-instagram"></i></span> @dinkeskabbengkayang.id</p>
         </div>
         
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-facebook"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-facebook"></i></span> @dinkeskabbengkayang.id</p>
         </div>
         
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-twitter"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-twitter"></i></span> @dinkeskabbengkayang.id</p>
         </div>
         
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-linkedin"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-linkedin"></i></span> @dinkeskabbengkayang.id</p>
         </div>
         
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-github"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-github"></i></span> @dinkeskabbengkayang.id</p>
         </div>
         
         <div>
-          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-twitch"></i></span> @tangspor.id</p>
+          <p class="text-xl"><span class="w-5"><i class="fa-brands fa-twitch"></i></span> @dinkeskabbengkayang.id</p>
         </div>
 
       </div>
@@ -145,10 +145,10 @@
     <div>
         <div class="hero bg-gradient-to-b from-gray-100 to-slate-600">
             <div class="hero-content flex-col lg:flex-row text-white">
-              <img src="{{ asset('img/me.jpg') }}" class="max-w-[350px] rounded-lg shadow-2xl" />
+              {{-- <img src="{{ asset('img/me.jpg') }}" class="max-w-[350px] rounded-lg shadow-2xl" /> --}}
               <div>
-                <h1 class="text-5xl font-bold">Muhammad Rajaswa Raihanu Bhamakerti</h1>
-                <p class="py-6">TANGSPOR Creator</p>
+                <h1 class="text-5xl font-bold">Institut Shanti Buana</h1>
+                <p class="py-6">Dinkes Creator</p>
               </div>
             </div>
           </div>

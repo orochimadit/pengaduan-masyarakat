@@ -17,7 +17,7 @@
     }
 @endphp
 
-<p align='center'>LAPORAN PENGGUNA TANGSPOR</p>
+<p align='center'>LAPORAN PENGGUNA DINKES</p>
 
 @if ($lvl == 'admin' || $lvl == NULL)
     <p>TABEL ADMIN</p>

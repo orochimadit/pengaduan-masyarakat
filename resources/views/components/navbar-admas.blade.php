@@ -6,7 +6,7 @@
       </label>
     </div>
     <div class="navbar-center">
-      <a href="/" class="btn btn-ghost normal-case text-xl">TANGSPOR!</a>
+      <a href="/" class="btn btn-ghost normal-case text-xl">Aduan Masyarakat!</a>
     </div>
     <div class="navbar-end gap-1">
       @if (Auth::check())
