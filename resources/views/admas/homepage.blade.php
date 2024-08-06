@@ -3,7 +3,7 @@
 @section('body')
 
     <div class="bg-red-700 flex items-center justify-center gap-5 sm:gap-20  p-10 text-center text-white relative">
-        <img class="border-4 h-20 p-1 sm:h-60 -rotate-12 border-white border-dashed rounded-md" src="{{ asset('img/logo-e-Lapor-Sehati.png) }}" alt="tangspor-logo.png">
+        <img class="border-4 h-20 p-1 sm:h-60 -rotate-12 border-white border-dashed rounded-md" src="{{ asset('img/logo-e-Lapor-Sehati.png') }}" alt="tangspor-logo.png">
 
         <div>
             <p class="font-bold text-4xl">DINKES KAB PENGKAYANG</p>
