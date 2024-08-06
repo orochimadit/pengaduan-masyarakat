@@ -40,31 +40,15 @@ class DatabaseSeeder extends Seeder
         User::factory(20)->create();
 
         Kecamatan::create([
-            'kecamatan' => 'Bengkayang',
+            'kecamatan' => 'puskesmas',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Ledo',
+            'kecamatan' => 'Dinas',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Seluas',
-        ]);
-
-        Kecamatan::create([
-            'kecamatan' => 'Jagoi Babang',
-        ]);
-
-        Kecamatan::create([
-            'kecamatan' => 'Montrado',
-        ]);
-
-        Kecamatan::create([
-            'kecamatan' => 'Sungai Raya',
-        ]);
-
-        Kecamatan::create([
-            'kecamatan' => 'bumi Emas',
+            'kecamatan' => 'Rumah Sakit',
         ]);
 
         // Pengaduan::factory(50)->create();

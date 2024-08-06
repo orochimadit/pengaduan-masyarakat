@@ -37,9 +37,9 @@
                         <input {{ Auth::check() ? '' : 'disabled' }} class="rounded-md w-full" type="date" max="{{ date('Y-m-d') }}" name="tgl_pengaduan" id="tgl_pengaduan">
                     </div>
                     <div>
-                        <label for="kecamatan">Kecamatan<span class="text-red-500">*</span></label>
+                        <label for="kecamatan">Dinas<span class="text-red-500">*</span></label>
                         <select {{ Auth::check() ? '' : 'disabled' }} class="rounded-md w-full" name="kecamatan" id="kecamatan" required>
-                            <option value="" disabled selected>- PILIH KECAMATAN -</option>
+                            <option value="" disabled selected>- PILIH Dinas -</option>
 
                             @foreach ($kecamatan as $i)
                                 <option value="{{ $i->id }}">{{ $i->kecamatan }}</option>
