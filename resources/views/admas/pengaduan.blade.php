@@ -1,7 +1,7 @@
 @extends('layouts/base')
 
 @section('body')
-<div class="bg-red-700 py-10 text-center text-white">
+<div class="bg-green-700 py-10 text-center text-white">
     <p class="font-bold text-2xl">Pengaduan</p>
     <small>Lihat Pengaduan Anda Disini</small>
 </div>

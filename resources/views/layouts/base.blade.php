@@ -30,9 +30,9 @@
             <!-- Sidebar content here -->
             <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/"><div class="w-5 mr-1"><i class="fa-solid fa-house"></i></div> Beranda</a></li>
             
-            @if (Auth::check())
+            {{-- @if (Auth::check())
               <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/pengaduan"><div class="w-5 mr-1"><i class="fa-solid fa-user-pen"></i></div> Pengaduan Anda</a></li>
-            @endif
+            @endif --}}
 
             <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/tentang-kami"><div class="w-5 mr-1"><i class="fa-solid fa-circle-info"></i></div> Tentang Kami</a></li>
 
@@ -41,8 +41,8 @@
             @endif
 
             @if ((Auth::user()->lvl ?? NULL) == 'admin')
-              <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/user"><div class="w-5 mr-1"><i class="fa-solid fa-users"></i></div> Rekapitulasi Pengguna</a></li>
-              <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/kecamatan"><div class="w-5 mr-1"><i class="fa-solid fa-location-dot"></i></div> Kecamatan</a></li>
+              {{-- <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/user"><div class="w-5 mr-1"><i class="fa-solid fa-users"></i></div> Rekapitulasi Pengguna</a></li> --}}
+              <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/kecamatan"><div class="w-5 mr-1"><i class="fa-solid fa-location-dot"></i></div> Puskesmas</a></li>
             @endif
           </ul>
         </div>

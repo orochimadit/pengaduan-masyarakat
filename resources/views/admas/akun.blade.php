@@ -28,10 +28,10 @@
 
             <div class="sm:flex gap-5">
                 <div id="nik" class="flex gap-5 flex-1">
-                    <div class="flex-1 mb-10 sm:mb-0">
+                    {{-- <div class="flex-1 mb-10 sm:mb-0">
                         <label for="inputNik">NIK</label>
                         <input id="inputNik" name="nik" disabled class="disabled:bg-slate-200 disabled:text-slate-500 rounded-md w-full" type="number" name="nik" required value="{{ $akun->nik }}">
-                    </div>
+                    </div> --}}
                     
                     <div id="username" class="flex-1">
                         <label for="inputUsername">Username</label>

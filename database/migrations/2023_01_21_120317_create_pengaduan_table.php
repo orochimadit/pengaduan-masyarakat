@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('pengaduan', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_pengaduan');
-            $table->foreignId('masyarakat_nik');
+            $table->string('no_hp');
+            // $table->foreignId('masyarakat_nik');
             $table->foreignId('kecamatan_id');
             $table->string('judul');
             $table->text('isi_laporan');

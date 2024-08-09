@@ -12,7 +12,7 @@
 <div class="p-4">
     <div class="relative mb-5">
         <h3 class="text-center text-5xl font-bold before:inline-block before:h-12 before:absolute before:-ml-4 before:w-1 before:bg-red-700 break-words">{{ $detail->judul }}</h3>
-        <small class="block text-center">Dibuat Oleh: {{ $detail->user->username }}</small>
+        {{-- <small class="block text-center">Dibuat Oleh: {{ $detail->user->username }}</small> --}}
     </div>
 
     <div class="sm:flex sm:gap-5">

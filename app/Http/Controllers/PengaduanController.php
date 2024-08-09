@@ -75,18 +75,18 @@ class PengaduanController extends Controller
             $file_foto = $request->file('foto');
             $ext_foto = $request->foto->extension();
             $save_dir = public_path('img_pengaduan/');
-            $new_name_foto =  "TANGSPOR_" . date('Y-m-d') . "_" . date('H-i-s') . "_" . Auth::user()->nik .  "." . $ext_foto;
+            $new_name_foto =  "TANGSPOR_" . date('Y-m-d') . "_" . date('H-i-s') . "_" . $ext_foto;
             $file_foto->move($save_dir, $new_name_foto);
         }
 
         $data = [
             'tgl_pengaduan' => $request->tgl_pengaduan,
-            'masyarakat_nik' => Auth::user()->nik,
             'kecamatan_id' => $request->kecamatan,
             'judul' => $request->judul_pengaduan,
             'isi_laporan' => $request->isi_laporan,
             'foto' => $new_name_foto,
-            'status' => '0'
+            'status' => '0',
+            'no_hp' => $request->no_hp,
         ];
 
         Pengaduan::create($data);
@@ -101,7 +101,7 @@ class PengaduanController extends Controller
      */
     public function show($id)
     {
-        $detail = Pengaduan::with('user')->where('id', '=', $id)->first();
+        $detail = Pengaduan::where('id', '=', $id)->first();
         $tanggapan = Tanggapan::with('user')->get()->where('pengaduan_id', '=', $id);
         // return $tanggapan->all();
         return view('admas/pengaduan_detail')->with([

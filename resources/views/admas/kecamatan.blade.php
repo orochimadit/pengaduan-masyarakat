@@ -3,19 +3,20 @@
 @section('body')
 <div class=" bg-slate-700 min-h-screen ">
 
-    <div class="bg-red-700 py-10 mb-10 text-center text-white border-y-4 border-red-900">
-        <p class="font-bold text-2xl">{{ $title }}</p>
+    <div class="bg-green-700 py-10 mb-10 text-center text-white border-y-4 border-green-900">
+        {{-- <p class="font-bold text-2xl">{{ $title }}</p> --}}
+        <p class="font-bold text-2xl">Puskesmas</p>
     </div>
 
     
         <div class="flex mx-5 flex-col sm:flex-row sm:justify-evenly ">
             <div class="sm:w-1/4">
                 <div class="p-3  bg-white border border-black rounded-md h-fit mb-5">
-                    <p class="p-3 bg-red-700 rounded-md text-white font-semibold text-2xl mb-3">Tambah Kecamatan</p>
+                    <p class="p-3 bg-green-700 rounded-md text-white font-semibold text-2xl mb-3">Tambah Puskesmas</p>
                     <form action="/admin/kecamatan/create" method="POST" class="flex flex-col gap-5">
                         @csrf
                         <div>
-                            <label for="inp_kecamatan">Nama Kecamatan</label>
+                            <label for="inp_kecamatan">Nama Puskesmas</label>
                             <input class="rounded-md w-full" type="text" name="kecamatan" id="inp_kecamatan">
                         </div>
                         <div class="text-right">
@@ -26,7 +27,7 @@
                         <div class="modal">
                             <div class="modal-box relative">
                                 <h3 class="text-lg font-bold">Konfirmasi!</h3>
-                                <p class="py-4">Anda yakin ingin tambah kecamatan baru?</p>
+                                <p class="py-4">Anda yakin ingin tambah Puskesmas baru?</p>
                                 <div class="modal-action">
                                     <label for="my-modal-3" class="btn btn-sm">Batal</label>
                                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 btn btn-sm">+ Tambah</button>
@@ -38,7 +39,7 @@
                 </div>
 
                 <div class="hidden sm:block p-3  bg-white border border-black rounded-md h-fit mb-5">
-                    <p class="p-3 bg-red-700 rounded-md text-white font-semibold text-2xl mb-3">Filter</p>
+                    <p class="p-3 bg-green-700 rounded-md text-white font-semibold text-2xl mb-3">Filter</p>
                     <form action="/admin/kecamatan" method="GET" class="flex flex-col gap-5">
                         <div>
                             <label for="inp_kecamatan">Nama Kecamatan</label>

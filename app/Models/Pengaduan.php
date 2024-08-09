@@ -13,10 +13,10 @@ class Pengaduan extends Model
 
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'masyarakat_nik', 'nik');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'masyarakat_nik', 'nik');
+    // }
 
     public function tanggapan()
     {

@@ -40,17 +40,71 @@ class DatabaseSeeder extends Seeder
         User::factory(20)->create();
 
         Kecamatan::create([
-            'kecamatan' => 'puskesmas',
+            'kecamatan' => 'Puskesmas siding',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Dinas',
+            'kecamatan' => 'Puskesmas Jagoi babang',
         ]);
 
         Kecamatan::create([
-            'kecamatan' => 'Rumah Sakit',
+            'kecamatan' => 'Puskesmas Seluas',
+        ]);
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Sanggau Ledo',
         ]);
 
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Tujuh Belas',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Ledo',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Lumar',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Suti Semarang',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Bengkayang',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Teriak',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Sungai Betung',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Samalantan',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Lembah Bawang',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Sei Duri',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Sungai Raya',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Monterado',
+        ]);
+
+        Kecamatan::create([
+            'kecamatan' => 'Puskesmas Capkala',
+        ]);
         // Pengaduan::factory(50)->create();
 
         $users = User::all();
@@ -60,7 +114,8 @@ class DatabaseSeeder extends Seeder
                 $kecamatan_id = Kecamatan::inRandomOrder()->first();
                 Pengaduan::create([
                     'tgl_pengaduan' => fake()->date(),
-                    'masyarakat_nik' => $user->nik,
+                    // 'masyarakat_nik' => $user->nik,
+                    'no_hp'    =>fake()->phoneNumber(),
                     'kecamatan_id' => $kecamatan_id->id,
                     'judul' => fake()->sentence(3),
                     'isi_laporan' => fake()->sentence(10),

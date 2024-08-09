@@ -2,15 +2,16 @@
 
 @section('body')
 
-    <div class="bg-red-700 flex items-center justify-center gap-5 sm:gap-20  p-10 text-center text-white relative">
+    <div class="bg-green-800 flex items-center justify-center gap-5 sm:gap-20  p-10 text-center text-white relative">
         <img class="border-4 h-20 p-1 sm:h-60 -rotate-12 border-white border-dashed rounded-md" src="{{ asset('img/logo-e-Lapor-Sehati.png') }}" alt="tangspor-logo.png">
 
         <div>
-            <p class="font-bold text-4xl">DINKES KAB BENGKAYANG</p>
-            <small class="sm:text-xl">E-Lapor Sehati</small>
+            <p class="font-bold text-4xl">E-LAPOR SEHATI</p>
+            <p class="font-bold italic  sm:text-2xl">Elektronik - Layanan Aspirasi Pengaduan Online Rakyat untuk Sehat Bersama, Keluhan Teratasi</p>
+            <small class="sm:text-xl"> adalah sebuah sistem pengaduan online inovatif yang dikembangkan dan dirancang untuk menjembatani komunikasi antara masyarakat dan penyedia layanan kesehatan, memungkinkan warga untuk dengan mudah menyampaikan keluhan dan aspirasi terkait layanan kesehatan melalui platform digital.</small>
         </div>
-
-        <i class="absolute sm:static top-8 right-7 h-6 sm:h-80 sm:w-60 fa-solid fa-comments"></i>
+         <img class="italic border-4 h-20 p-1 sm:h-60 rotate-12 border-white border-dashed rounded-md" src="{{ asset('img/pemkab.png') }}" alt="tangspor-logo.png">
+        {{-- <i class="absolute sm:static top-8 right-7 h-6 sm:h-80 sm:w-60 fa-solid fa-comments"></i> --}}
     </div>
 
     <div class="sm:flex sm:justify-center sm:items-center my-5 px-3">
@@ -24,9 +25,9 @@
     </div>
 
     <div class="relative mx-5 sm:mx-0">
-        <div class=" bg-white border-2 border-slate-800 rounded-md w-full sm:w-96 p-5 mx-auto my-10 after:bg-gradient-to-r from-slate-500 to-red-700 after:z-[-1] after:h-52 after:w-full after:left-0 after:block after:absolute after:top-36 after:-skew-y-[12deg]">
+        <div class=" bg-white border-2 border-slate-800 rounded-md w-full sm:w-96 p-5 mx-auto my-10 after:bg-gradient-to-r from-slate-500 to-green-700 after:z-[-1] after:h-52 after:w-full after:left-0 after:block after:absolute after:top-36 after:-skew-y-[12deg]">
             <label for="tgl_pengaduan">
-                <p class="font-bold text-2xl mb-5 text-center bg-red-700 text-white rounded-md py-2">Form Pengaduan</p>
+                <p class="font-bold text-2xl mb-5 text-center bg-green-700 text-white rounded-md py-2">Form Pengaduan</p>
             </label>
             <form id="formPengaduan" action="/pengaduan/create" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -34,12 +35,12 @@
                     <div>
                         <label for="tgl_pengaduan">Tanggal Kejadian<span class="text-red-500">*</span></label>
                         <input hidden type="date" value="{{ date('Y-m-d') }}">
-                        <input {{ Auth::check() ? '' : 'disabled' }} class="rounded-md w-full" type="date" max="{{ date('Y-m-d') }}" name="tgl_pengaduan" id="tgl_pengaduan">
+                        <input class="rounded-md w-full" type="date" max="{{ date('Y-m-d') }}" name="tgl_pengaduan" id="tgl_pengaduan">
                     </div>
                     <div>
                         <label for="kecamatan">Dinas<span class="text-red-500">*</span></label>
-                        <select {{ Auth::check() ? '' : 'disabled' }} class="rounded-md w-full" name="kecamatan" id="kecamatan" required>
-                            <option value="" disabled selected>- PILIH Dinas -</option>
+                        <select class="rounded-md w-full" name="kecamatan" id="kecamatan" required>
+                            <option value="" disabled selected>- PILIH PUSKESMAS -</option>
 
                             @foreach ($kecamatan as $i)
                                 <option value="{{ $i->id }}">{{ $i->kecamatan }}</option>
@@ -48,17 +49,21 @@
                         </select>
                     </div>
                     <div>
+                        <label for="no_hp">nomor Hp<span class="text-red-500">*</span></label>
+                        <input class="rounded-md w-full" type="text" name="no_hp" id="no_hp">
+                    </div>
+                    <div>
                         <label for="judul_pengaduan">Judul<span class="text-red-500">*</span></label>
-                        <input {{ Auth::check() ? '' : 'disabled' }} class="rounded-md w-full" type="text" name="judul_pengaduan" id="judul_pengaduan">
+                        <input class="rounded-md w-full" type="text" name="judul_pengaduan" id="judul_pengaduan">
                     </div>
                     <div>
                         <label for="isi_laporan">Isi<span class="text-red-500">*</span></label>
-                        <textarea {{ Auth::check() ? '' : 'disabled' }} name="isi_laporan" id="isi_laporan" rows="3" class="rounded-md w-full"></textarea>
+                        <textarea  name="isi_laporan" id="isi_laporan" rows="3" class="rounded-md w-full"></textarea>
                     </div>
                     <div class="mb-5">
                         <label for="foto">Foto</label>
                         
-                        <input {{ Auth::check() ? '' : 'disabled' }} class="block w-full text-sm text-slate-500
+                        <input class="block w-full text-sm text-slate-500
                         border-2 rounded-full
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
@@ -68,7 +73,7 @@
                         type="file" name="foto" id="foto">
                     </div>
                     <div>
-                        @if (Auth::check())
+                        {{-- @if (Auth::check()) --}}
                             <small class="block mb-1">Catatan: Kolom yang memiliki bintang merah (<span class="text-red-500">*</span>) wajib diisi!</small>
                             <label for="modal-lapor" class="btn w-full">LAPOR!</label>
 
@@ -87,19 +92,19 @@
                             </div>
                             </div>
                             
-                        @else
+                        {{-- @else
                             <label class="btn w-full" for="modal-login">Login Terlebih Dahulu!</label>
                             <script>
 
                             </script>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="bg-red-700 py-10 mt-5 text-center text-white border-y-4 border-red-900">
+    <div class="bg-green-800 py-10 mt-5 text-center text-white border-y-4 border-red-900">
         <p class="font-semibold text-2xl">JUMLAH LAPORAN SAAT INI</p>
         <label class="text-5xl font-bold">{{ $jml_pengaduan }}</label>
     </div>

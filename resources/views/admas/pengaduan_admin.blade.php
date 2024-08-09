@@ -2,7 +2,7 @@
 
 @section('body')
 
-<div class="bg-red-700 py-10 text-center text-white border-y-4 border-red-900">
+<div class="bg-green-700 py-10 text-center text-white border-y-4 border-green-900">
     <p class="font-bold text-2xl">{{ $title }}</p>
     <small>Seluruh Pengaduan Warga</small>
 </div>
@@ -155,7 +155,7 @@
                         <tr>
                             <th class="sm:w-[5%]">No.</th>
                             <th class="sm:w-[15%]">Tanggal</th>
-                            <th>NIK</th>    
+                            <th>No Hp</th>    
                             <th class="sm:w-[45%]">Judul</th>
                             <th class="sm:w-[15%]">Status</th>
                             <th class="sm:w-[10%]">Aksi</th>
@@ -210,8 +210,9 @@
                             @foreach ($pengaduan as $index => $i)
                                 <tr class="[&>td]:border [&>td]:p-2 text-center">
                                     <th><p class="">{{ $pengaduan->firstItem() + $index }}</p></th>
-                                    <td><p class="">{{ date('d-m-Y', strtotime($i->tgl_pengaduan)) }}</p></td>        
-                                    <td><a href="/admin/user/detail/{{ $i->masyarakat_nik }}" class="underline">{{ $i->masyarakat_nik }}</a></td>           
+                                    <td><p class="">{{ date('d-m-Y', strtotime($i->tgl_pengaduan)) }}</p></td>   
+                                    <td><p>{{ $i->no_hp }}</p></td>     
+                                    {{-- <td><a href="/admin/user/detail/{{ $i->masyarakat_nik }}" class="underline">{{ $i->masyarakat_nik }}</a></td>            --}}
                                     <td><p class="">{{ $i->judul }}</p></td>
                                     <td><p class=" text-sm {{ $status->colorStatus($i) }} rounded-md p-1 mx-auto text-white w-32"><span class="">{{ $status->textStatus($i) }}</span></p></td>
                                     <td class="">

@@ -13,7 +13,7 @@
 
   <div class="hero-content text-center">
     <div class="max-w-md bg-white border border-black p-3 rounded-xl relative after:block after:h-full after:w-full after:bg-slate-200 after:-z-10 after:border after:top-4 after:border-black after:absolute after:rounded-xl">
-            <h1 class="text-5xl font-bold bg-red-600 p-3 rounded-md text-white">Tentang Kami</h1>
+            <h1 class="text-5xl font-bold bg-green-800 p-3 rounded-md text-white">Tentang Kami</h1>
               <p class="py-6">Aduan Masyarakat DINKES Melapor Dibuat pada tahun 2024.</p>
           </div>
         </div>
@@ -136,7 +136,7 @@
     </div>
 
     <div class="hidden lg:block relative ml-auto w-96 h-40 border-4 border-r-0 border-slate-500 rounded-l-xl border-dashed">
-      <img class="h-52 -mt-7 mx-auto rotate-12 border-4 border-dashed bg-white p-1 border-slate-500 rounded-md" src="{{ asset('/img/logo-tangspor.png') }}" alt="logo-tangspor.png">
+      <img class="h-52 -mt-7 mx-auto rotate-12 border-4 border-dashed bg-white p-1 border-slate-500 rounded-md" src="{{ asset('/img/Logo.png') }}" alt="logo-tangspor.png">
     </div>
 
   </div>

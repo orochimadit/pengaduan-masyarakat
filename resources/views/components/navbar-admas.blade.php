@@ -1,4 +1,4 @@
-<div class="navbar bg-red-800 text-white sticky top-0 z-10">
+<div class="navbar bg-green-900 text-white sticky top-0 z-10">
     <div class="navbar-start">
 
       <label for="my-drawer" class="btn btn-square btn-outline border-white text-white" >
