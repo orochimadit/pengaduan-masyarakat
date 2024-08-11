@@ -108,22 +108,22 @@ class DatabaseSeeder extends Seeder
 
         // Pengaduan::factory(50)->create();
 
-        $users = User::all();
-        foreach ($users as $index => $user) {
-            for ($i = 1; $i <= 20; $i++) {
-                $user_nik = User::inRandomOrder()->first();
-                $kecamatan_id = Kecamatan::inRandomOrder()->first();
-                Pengaduan::create([
-                    'tgl_pengaduan' => fake()->date(),
-                    // 'masyarakat_nik' => $user->nik,
-                    'no_hp'    =>fake()->phoneNumber(),
-                    'kecamatan_id' => $kecamatan_id->id,
-                    'judul' => fake()->sentence(3),
-                    'isi_laporan' => fake()->sentence(10),
-                    'foto' => fake()->randomElement(['erupsi.jpg', 'kebakaran.jpg', 'longsor.jpg', 'bencana.jpg', 'berlubang.jpeg']),
-                    'status' => fake()->randomElement(['0', '1', '2']),
-                ]);
-            }
-        }
+        // $users = User::all();
+        // foreach ($users as $index => $user) {
+        //     for ($i = 1; $i <= 20; $i++) {
+        //         $user_nik = User::inRandomOrder()->first();
+        //         $kecamatan_id = Kecamatan::inRandomOrder()->first();
+        //         Pengaduan::create([
+        //             'tgl_pengaduan' => fake()->date(),
+        //             // 'masyarakat_nik' => $user->nik,
+        //             'no_hp'    =>fake()->phoneNumber(),
+        //             'kecamatan_id' => $kecamatan_id->id,
+        //             'judul' => fake()->sentence(3),
+        //             'isi_laporan' => fake()->sentence(10),
+        //             'foto' => fake()->randomElement(['erupsi.jpg', 'kebakaran.jpg', 'longsor.jpg', 'bencana.jpg', 'berlubang.jpeg']),
+        //             'status' => fake()->randomElement(['0', '1', '2']),
+        //         ]);
+        //     }
+        // }
     }
 }
