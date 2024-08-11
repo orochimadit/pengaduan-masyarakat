@@ -42,7 +42,7 @@
                     <p class="p-3 bg-green-700 rounded-md text-white font-semibold text-2xl mb-3">Filter</p>
                     <form action="/admin/kecamatan" method="GET" class="flex flex-col gap-5">
                         <div>
-                            <label for="inp_kecamatan">Nama Kecamatan</label>
+                            <label for="inp_kecamatan">Nama Puskesmas/Rumah Sakit</label>
                             <input class="rounded-md w-full" type="text" name="kecamatan" id="inp_kecamatan" value="{{ Session::get('kecamatan') }}">
                         </div>
                         <div class="text-right">
