@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pengaduan::class, 'masyarakat_nik', 'nik');
     }
+    public function kecamatan()
+{
+    return $this->belongsTo(Kecamatan::class);
+}
 }

@@ -1,4 +1,4 @@
-<div class="navbar bg-green-900 text-white sticky top-0 z-10">
+<div class="navbar bg-green-400 text-white sticky top-0 z-10">
     <div class="navbar-start">
 
       <label for="my-drawer" class="btn btn-square btn-outline border-white text-white" >
@@ -6,7 +6,7 @@
       </label>
     </div>
     <div class="navbar-center">
-      <a href="/" class="btn btn-ghost normal-case text-xl">E-Lapor Sehati</a>
+      <a href="/" class="btn btn-ghost normal-case text-xl text-black">E-Lapor Sehati</a>
     </div>
     <div class="navbar-end gap-1">
       @if (Auth::check())
@@ -16,14 +16,14 @@
             <i class="fa-solid fa-user mr-2 absolute left-3"></i><span class="hidden sm:inline max-w-[100px] sm:max-w-[250px] truncate">{{ Auth::user()->name }}</span><i class="ml-2 fa-solid fa-caret-down absolute right-3"></i>
           </label>
           <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-slate-700">
-            <li><a href="/akun"><i class="fa-solid fa-user"></i> Profil</a></li>
+            <li><a href="#"><i class="fa-solid fa-user"></i> Profil</a></li>
             <li><a href="/sign-out"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a></li>
           </ul>
         </div>
       @else
       <!-- The button to open modal -->
-        <label for='modal-login' class="w-20 btn btn-outline text-white border-white">Login</label>
-        <label for='modal-register' class="w-20 btn btn-outline text-white border-white">Register</label>
+        {{-- <label for='modal-login' class="w-20 btn btn-outline text-white border-white">Login</label>
+        <label for='modal-register' class="w-20 btn btn-outline text-white border-white">Register</label> --}}
 
         <!-- Put this part before </body> tag -->
 

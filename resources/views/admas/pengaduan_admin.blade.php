@@ -12,7 +12,7 @@
             <label for="tgl_pengaduan">
                 <p class="font-semibold text-white h-14 xl:h-fit text-center bg-sky-500 rounded-md sm:py-2">Seluruh <br class="xl:hidden">Pengaduan</p>
             </label>
-            <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml->count( ) }}</p>
+            <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml['total'] }}</p>
         </div>
         
         <div class="flex flex-wrap gap-5 justify-center mb-5 sm:m-10">
@@ -21,24 +21,27 @@
                 <label for="tgl_pengaduan">
                     <p class="font-semibold text-white h-14 xl:h-fit text-center bg-red-700 rounded-md sm:py-2">Pengaduan <br class="xl:hidden">Belum Diproses</p>
                 </label>
-                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml->where('status', '=', '0')->count() }}</p>
-                <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-belum-diproses">Selengkapnya <span>>></span></a>
+                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml['belum_diproses'] }}</p>
+                 <a class="btn btn-sm w-full text-sm" href="#">Selengkapnya <span>>></span></a>
+                {{-- <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-belum-diproses">Selengkapnya <span>>></span></a> --}}
             </div>
         
             <div class="sm:flex-1 border border-black rounded-md p-2 bg-white hover:scale-110 transition-transform">
                 <label for="tgl_pengaduan">
                     <p class="font-semibold text-white h-14 xl:h-fit text-center bg-yellow-500 rounded-md sm:py-2">Pengaduan <br class="xl:hidden">Sedang Diproses</p>
                 </label>
-                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml->where('status', '=', '1')->count() }}</p>
-                <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-sedang-diproses">Selengkapnya <span>>></span></a>
+                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml['sedang_diproses'] }}</p>
+                {{-- <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-sedang-diproses">Selengkapnya <span>>></span></a> --}}
+                 <a class="btn btn-sm w-full text-sm" href="#">Selengkapnya <span>>></span></a>
             </div>
         
             <div class="sm:flex-1 border border-black rounded-md p-2 bg-white hover:scale-110 transition-transform">
                 <label for="tgl_pengaduan">
                     <p class="font-semibold text-white h-14 xl:h-fit text-center bg-green-500 rounded-md sm:py-2">Pengaduan <br class="xl:hidden">Telah Selesai</p>
                 </label>
-                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml->where('status', '=', '2')->count() }}</p>
-                <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-selesai">Selengkapnya <span>>></span></a>
+                <p class="text-4xl font-bold text-center my-5 truncate">{{ $jml['selesai'] }}</p>
+                {{-- <a class="btn btn-sm w-full text-sm" href="/admin/pengaduan-selesai">Selengkapnya <span>>></span></a> --}}
+                 <a class="btn btn-sm w-full text-sm" href="#">Selengkapnya <span>>></span></a>
             </div>
         
         </div>
@@ -157,6 +160,7 @@
                             <th class="sm:w-[15%]">Tanggal</th>
                             <th>No Hp</th>    
                             <th class="sm:w-[45%]">Judul</th>
+                            <th>Kecamatan</th>
                             <th class="sm:w-[15%]">Status</th>
                             <th class="sm:w-[10%]">Aksi</th>
                         </tr>
@@ -211,9 +215,12 @@
                                 <tr class="[&>td]:border [&>td]:p-2 text-center">
                                     <th><p class="">{{ $pengaduan->firstItem() + $index }}</p></th>
                                     <td><p class="">{{ date('d-m-Y', strtotime($i->tgl_pengaduan)) }}</p></td>   
-                                    <td><p>{{ $i->no_hp }}</p></td>     
+                                    <td>  <a href="https://wa.me/{{ $i->no_hp }}?text=Halo, kami dari admin ingin membahas pengaduan Anda mengenai '{{ $i->judul }}'."
+            target="_blank" class="w-full btn btn-sm bg-gray-500 hover:bg-green-600">
+            <i class="fa-brands fa-whatsapp"></i> {{ $i->no_hp }}
                                     {{-- <td><a href="/admin/user/detail/{{ $i->masyarakat_nik }}" class="underline">{{ $i->masyarakat_nik }}</a></td>            --}}
                                     <td><p class="">{{ $i->judul }}</p></td>
+                                    <td>{{ $i->kecamatan ? $i->kecamatan->kecamatan : 'Tidak Diketahui' }}</td>
                                     <td><p class=" text-sm {{ $status->colorStatus($i) }} rounded-md p-1 mx-auto text-white w-32"><span class="">{{ $status->textStatus($i) }}</span></p></td>
                                     <td class="">
                                         <div class="flex flex-col gap-1">

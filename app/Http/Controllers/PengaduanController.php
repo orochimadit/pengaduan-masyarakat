@@ -70,12 +70,21 @@ class PengaduanController extends Controller
             'foto.mimes' => 'Type Foto Yang Diizinkan (jpg, jpeg, png)',
         ]);
 
+        // Pengecekan jumlah pengaduan di kecamatan tertentu pada tanggal tertentu
+    $countPengaduanHariIni = Pengaduan::where('kecamatan_id', $request->kecamatan)
+    ->whereDate('tgl_pengaduan', $request->tgl_pengaduan)
+    ->count();
+
+// Jika sudah ada 5 pengaduan, kembalikan ke halaman sebelumnya dengan pesan error
+if ($countPengaduanHariIni >= 5) {
+    return redirect()->back()->with('error', 'Kecamatan ini telah menerima 5 pengaduan hari ini. Silakan coba lagi besok.');
+}
         $new_name_foto = "";
         if (NULL !== $request->file('foto')) {
             $file_foto = $request->file('foto');
             $ext_foto = $request->foto->extension();
             $save_dir = public_path('img_pengaduan/');
-            $new_name_foto =  "TANGSPOR_" . date('Y-m-d') . "_" . date('H-i-s') . "_" . $ext_foto;
+            $new_name_foto =  "ESEHATI_" . date('Y-m-d') . "_" . date('H-i-s') . "_" . $ext_foto;
             $file_foto->move($save_dir, $new_name_foto);
         }
 
@@ -90,7 +99,7 @@ class PengaduanController extends Controller
         ];
 
         Pengaduan::create($data);
-        return redirect('/pengaduan')->with('success', 'Berhasil Melapor');
+        return  back()->with('success', 'Berhasil Melapor');
     }
 
     /**
@@ -115,15 +124,23 @@ class PengaduanController extends Controller
     {
         $request->validate([
             'pesan' => 'required',
+            'foto' => 'nullable|mimes:jpg,jpeg,png',
         ], [
             'pesan.required' => 'Tidak dapat mengirim pesan kosong',
         ]);
 
+          // Proses upload foto jika ada
+    $fotoPath = null;
+    if ($request->hasFile('foto')) {
+        $file_foto = $request->file('foto');
+        $fotoPath = $file_foto->store('tanggapan_foto', 'public'); // Simpan di storage/public/tanggapan_foto
+    }
         $data = [
             'pengaduan_id' => $id,
             'petugas_id' => Auth::user()->nik,
             'tanggapan' => $request->pesan,
             'tgl_tanggapan' => date('Y-m-d'),
+            'foto' => $fotoPath,
         ];
 
         Tanggapan::create($data);

@@ -84,7 +84,7 @@ Route::get('/admin/kecamatan', [adminController::class, 'kecamatan'])->middlewar
 Route::post('/admin/kecamatan/create', [adminController::class, 'kecamatanCreate'])->middleware('isAdmin');
 Route::post('/admin/kecamatan/edit/{id}', [adminController::class, 'kecamatanEdit'])->middleware('isAdmin');
 Route::post('/admin/kecamatan/delete/{id}', [adminController::class, 'kecamatanDelete'])->middleware('isAdmin');
-
+Route::resource('users', UsersController::class);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard/all')->with([

@@ -74,63 +74,61 @@ class adminController extends Controller
 
     public function index(Request $request)
     {
+        // Menyimpan filter dalam session
         Session::flash('search', $request->search);
         Session::flash('tgl_awal', $request->tgl_awal);
         Session::flash('tgl_akhir', $request->tgl_akhir);
         Session::flash('status', $request->status);
-
-        $pengaduan = Pengaduan::orderBy('tgl_pengaduan', 'desc')->paginate(10);
-
+    
+        // Mendapatkan user yang sedang login
+        $user = Auth::user();
+    
+        // Memulai query untuk pengaduan
+        $query = Pengaduan::query();
+    
+        // Jika user adalah kecamatan, batasi query ke kecamatan mereka
+        if ($user->lvl === 'petugas') {
+            $query->where('kecamatan_id', $user->kecamatan_id);
+        }
+        // Jika user adalah admin, mereka dapat melihat semua data, jadi tidak ada batasan kecamatan
+    
+        // Tambahkan filter pencarian jika ada
         if (isset($request->search)) {
-            $pengaduan = Pengaduan::where(function ($query) use ($request) {
-                $query->orWhere('judul', 'like', '%' . $request->search . '%')
+            $query->where(function ($q) use ($request) {
+                $q->orWhere('judul', 'like', '%' . $request->search . '%')
                     ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
                     ->orWhere('masyarakat_nik', 'like', '%' . $request->search . '%');
-            })->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
+            });
         }
-
+    
+        // Tambahkan filter tanggal jika ada
         if (isset($request->tgl_awal) && isset($request->tgl_akhir)) {
-            $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$request->tgl_awal, $request->tgl_akhir])->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
+            $query->whereBetween('tgl_pengaduan', [$request->tgl_awal, $request->tgl_akhir]);
         }
-
+    
+        // Tambahkan filter status jika ada
         if (isset($request->status)) {
-            $pengaduan = Pengaduan::where('status', '=', $request->status)->paginate(1000);
+            $query->where('status', '=', $request->status);
         }
+    
+        // Urutkan hasil berdasarkan tanggal pengaduan
+        $pengaduan = $query->orderBy('tgl_pengaduan', 'desc')->paginate(10);
+        
+         // Simpan query dasar untuk penghitungan
+    $baseQuery = clone $query;
 
-        if (isset($request->search) && (isset($request->tgl_awal) && isset($request->tgl_akhir))) {
-            $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$request->tgl_awal, $request->tgl_akhir])
-                ->where(function ($query) use ($request) {
-                    $query->orWhere('judul', 'like', '%' . $request->search . '%')
-                        ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
-                        ->orWhere('masyarakat_nik', 'like', '%' . $request->search . '%');
-                })->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
-        }
-
-        if ((isset($request->tgl_awal) && isset($request->tgl_akhir)) && isset($request->status)) {
-            $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$request->tgl_awal, $request->tgl_akhir])->where('status', '=', $request->status)->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
-        }
-
-        if (isset($request->search) && isset($request->status)) {
-            $pengaduan = Pengaduan::where('status', '=', $request->status)
-                ->where(function ($query) use ($request) {
-                    $query->orWhere('judul', 'like', '%' . $request->search . '%')
-                        ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
-                        ->orWhere('masyarakat_nik', 'like', '%' . $request->search . '%');
-                })->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
-        }
-
-        if (isset($request->search) && (isset($request->tgl_awal) && isset($request->tgl_akhir)) && isset($request->status)) {
-            $pengaduan = Pengaduan::whereBetween('tgl_pengaduan', [$request->tgl_awal, $request->tgl_akhir])
-                ->where('status', '=', $request->status)
-                ->where(function ($query) use ($request) {
-                    $query->orWhere('judul', 'like', '%' . $request->search . '%')
-                        ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
-                        ->orWhere('masyarakat_nik', 'like', '%' . $request->search . '%');
-                })->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
-        }
-
+    // Hitung jumlah pengaduan berdasarkan status
+    $jmlPengaduan = [
+        'total' => $baseQuery->count(),
+        'belum_diproses' => $baseQuery->clone()->where('status', '=', '0')->count(),
+        'sedang_diproses' => $baseQuery->clone()->where('status', '=', '1')->count(),
+        'selesai' => $baseQuery->clone()->where('status', '=', '2')->count(),
+    ];
+    
+        // Mengembalikan view dengan data yang telah difilter
         return view('admas/pengaduan_admin')->with([
-            'jml' => Pengaduan::all(),
+            
+            'jml' => $jmlPengaduan,
             'title' => 'Seluruh Pengaduan',
             'pengaduan' => $pengaduan,
             'tgl_awal' => $request->tgl_awal,
@@ -139,6 +137,7 @@ class adminController extends Controller
             'status' => $request->status,
         ]);
     }
+    
 
 
     public function export(Request $request)

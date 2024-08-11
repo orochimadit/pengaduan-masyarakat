@@ -27,18 +27,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         
-        User::create([
-            'nik' => fake('id_ID')->nik(),
-            'name' => 'candra',
-            'username' => 'candra',
-            'email' => 'candra@isb.com',
-            'password' => Hash::make('12345678'),
-            'telp' => '111222211',
-            'lvl' => 'admin',
-        ]);
-
-        User::factory(20)->create();
-
         Kecamatan::create([
             'kecamatan' => 'Puskesmas siding',
         ]);
@@ -105,6 +93,19 @@ class DatabaseSeeder extends Seeder
         Kecamatan::create([
             'kecamatan' => 'Puskesmas Capkala',
         ]);
+        User::create([
+            'nik' => fake('id_ID')->nik(),
+            'name' => 'candra',
+            'username' => 'candra',
+            'email' => 'candra@isb.com',
+            'password' => Hash::make('12345678'),
+            'telp' => '111222211',
+            'lvl' => 'admin',
+            
+        ]);
+
+        User::factory(20)->create();
+
         // Pengaduan::factory(50)->create();
 
         $users = User::all();

@@ -25,6 +25,6 @@ class Pengaduan extends Model
 
     public function kecamatan()
     {
-        return $this->hasMany(Kecamatan::class, 'id', 'kecamatan_id')->withTrashed();
+        return $this->belongsTo(Kecamatan::class);
     }
 }

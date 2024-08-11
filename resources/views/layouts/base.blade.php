@@ -26,7 +26,7 @@
         <div class="drawer-side">
           <label for="my-drawer" class="drawer-overlay fixed w-full h-full"></label>
           <ul class="menu h-full overflow-x-auto fixed p-4 bg-slate-900 text-white">
-              <label for="my-drawer" class="text-4xl font-bold text-center mb-3 bg-red-700 p-3 rounded-md"><img class="inline-block -mt-2 h-10 border-2 border-white rounded" src="{{ asset('img/logo-tangspor.png') }}" alt="logo-tangspor.png"> ADUAN MASYARAKAT!</label>
+              <label for="my-drawer" class="text-4xl font-bold text-center mb-3 bg-green-700 p-3 rounded-md"><img class="inline-block -mt-2 h-10 border-2 border-white rounded" src="{{ asset('img/Logo.png') }}" alt="logo-tangspor.png"> ADUAN MASYARAKAT!</label>
             <!-- Sidebar content here -->
             <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/"><div class="w-5 mr-1"><i class="fa-solid fa-house"></i></div> Beranda</a></li>
             
@@ -43,6 +43,10 @@
             @if ((Auth::user()->lvl ?? NULL) == 'admin')
               {{-- <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/user"><div class="w-5 mr-1"><i class="fa-solid fa-users"></i></div> Rekapitulasi Pengguna</a></li> --}}
               <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/kecamatan"><div class="w-5 mr-1"><i class="fa-solid fa-location-dot"></i></div> Puskesmas</a></li>
+            @endif
+             @if ((Auth::user()->lvl ?? NULL) == 'admin')
+              {{-- <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/admin/user"><div class="w-5 mr-1"><i class="fa-solid fa-users"></i></div> Rekapitulasi Pengguna</a></li> --}}
+              <li class="border-2 border-slate-700 my-1 rounded-md hover:bg-slate-700 transition"><a href="/users"><div class="w-5 mr-1"><i class="fa-solid fa-location-dot"></i></div> Pengguna</a></li>
             @endif
           </ul>
         </div>

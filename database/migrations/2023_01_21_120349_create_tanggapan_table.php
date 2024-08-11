@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('pengaduan_id')->constrained('pengaduan', 'id')->cascadeOnDelete();
             $table->date('tgl_tanggapan');
             $table->text('tanggapan');
+            $table->string('foto')->nullable();
             $table->foreignId('petugas_id');
             $table->timestamps();
         });

@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('telp', 20);
             $table->enum('lvl', ['masyarakat', 'petugas', 'admin']);
             $table->enum('aktif', ['1', '0']);
+            $table->foreignId('kecamatan_id')->nullable()->constrained('kecamatan')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

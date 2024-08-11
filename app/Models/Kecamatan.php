@@ -12,4 +12,15 @@ class Kecamatan extends Model
 
     protected $table = 'kecamatan';
     protected $guarded = ['id'];
+
+    public function users()
+{
+    return $this->hasMany(User::class);
+}
+
+// Relasi: Satu Kecamatan memiliki banyak Pengaduan
+public function pengaduan()
+{
+    return $this->hasMany(Pengaduan::class);
+}
 }

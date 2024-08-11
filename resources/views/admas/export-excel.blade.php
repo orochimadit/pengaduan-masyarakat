@@ -22,7 +22,7 @@
     }
 @endphp
 
-<p align='center'>LAPORAN PENGADUAN TANGSPOR</p>
+<p align='center'>LAPORAN PENGADUAN E-LAPOR SEHATI</p>
 
 @if (isset($request->tgl_awal) && isset($request->tgl_akhir))
     <p>Dari: {{ $request->tgl_awal }}</p>

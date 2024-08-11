@@ -19,7 +19,7 @@
         </div>
       </div>
       
-      <div class="hover:top-28 hover:-rotate-3 transition-all  bg-slate-400 w-80 rounded-xl p-5 border-2 shadow-lg shadow-slate-600 border-slate-800 overflow-hidden hidden lg:block relative sm:left-8 sm:top-32 sm:absolute">
+      {{-- <div class="hover:top-28 hover:-rotate-3 transition-all  bg-slate-400 w-80 rounded-xl p-5 border-2 shadow-lg shadow-slate-600 border-slate-800 overflow-hidden hidden lg:block relative sm:left-8 sm:top-32 sm:absolute">
         <div class="bg-white absolute top-0 w-full left-0 flex z-50">
           
           <p class="font-bold p-3"><span class="bg-slate-800 p-1 h-1 w-5 rounded-full"></span> Group Warga DINKES BENGKAYANG</p>
@@ -79,14 +79,14 @@
           </div>
         </div>
       
-      </div>
+      </div> --}}
 
   
 
   <div class="flex py-3 gap-3 bg-slate-200">
 
-    <div class="rounded-r-xl border-t-4 border-r-4 border-b-4 border-dashed border-slate-500 h-32 w-96 overflow-hidden">
-    </div>
+    {{-- <div class="rounded-r-xl border-t-4 border-r-4 border-b-4 border-dashed border-slate-500 h-32 w-96 overflow-hidden">
+    </div> --}}
 
     <div class="sm:mt-10">
       <h3 class="font-bold text-4xl ">Misi Kami</h3>
