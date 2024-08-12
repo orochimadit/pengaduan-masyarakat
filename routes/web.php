@@ -35,7 +35,7 @@ Route::post('/sign-up', [Controller::class, 'register'])->middleware('alreadyLog
 
 // Pengaduan Umum
 Route::get('/pengaduan', [PengaduanController::class, 'index'])->middleware('loginCheck');
-Route::post('/pengaduan/create', [PengaduanController::class, 'store'])->middleware('loginCheck');
+Route::post('/pengaduan/create', [PengaduanController::class, 'store']);
 
 Route::post('/pengaduan/delete/{id}', [PengaduanController::class, 'destroy']);
 
