@@ -5,18 +5,24 @@
 <div class="bg-green-600 flex items-center justify-center gap-5 sm:gap-20 p-10 text-center text-white relative">
     <img class="border-4 h-20 p-1 sm:h-60 -rotate-12 border-white rounded-md" src="{{ asset('img/logo-e-Lapor-Sehati.png') }}" alt="tangspor-logo.png">
 
-    <div class="text-center p-4">
-        <p class="font-bold text-2xl sm:text-4xl">E-LAPOR SEHATI</p>
-        <p class="font-bold italic text-lg sm:text-2xl mt-2">Elektronik - Layanan Aspirasi Pengaduan Online Rakyat untuk Sehat Bersama, Keluhan Teratasi</p>
-        <small class="text-sm sm:text-lg mt-2 block">Adalah sebuah sistem pengaduan online inovatif yang dikembangkan dan dirancang untuk menjembatani komunikasi antara masyarakat dan penyedia layanan kesehatan, memungkinkan warga untuk dengan mudah menyampaikan keluhan dan aspirasi terkait layanan kesehatan melalui platform digital.</small>
+     <div class="text-center p-4 relative">
+        <!-- Logo dengan opacity 50% di dalam text-center -->
+        <img class="absolute inset-0 w-full h-full opacity-50 object-contain z-0" src="{{ asset('img/Logo.png') }}" alt="background-logo">
+        
+        <!-- Konten lainnya dengan z-index lebih tinggi -->
+        <div class="relative z-10">
+            <p class="font-bold text-2xl sm:text-4xl">E-LAPOR SEHATI</p>
+            <p class="font-bold italic text-lg sm:text-2xl mt-2">Elektronik - Layanan Aspirasi Pengaduan Online Rakyat untuk Sehat Bersama, Keluhan Teratasi</p>
+            <small class="text-sm sm:text-lg mt-2 block">Adalah sebuah sistem pengaduan online inovatif yang dikembangkan dan dirancang untuk menjembatani komunikasi antara masyarakat dan penyedia layanan kesehatan, memungkinkan warga untuk dengan mudah menyampaikan keluhan dan aspirasi terkait layanan kesehatan melalui platform digital.</small>
+        </div>
     </div>
 
     <img class="border-4 h-20 sm:h-60 p-1 rotate-12 border-white rounded-md object-contain" src="{{ asset('img/pemkab.png') }}" alt="tangspor-logo.png">
 </div>
 <div class="sm:flex sm:justify-center sm:items-center my-5 px-3">
     <ul class="steps steps-vertical md:steps-horizontal block text-white md:text-black">
-        <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Buat Akun</span></li>
-        <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Login</span></li>
+        {{-- <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Buat Akun</span></li>
+        <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Login</span></li> --}}
         <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Laporkan Masalahmu</span></li>
         <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Kirim</span></li>
         <li class="step step-neutral"><span class="bg-gradient-to-r from-red-700 to-slate-500 md:bg-none p-3 rounded-md w-full text-left sm:text-center">Selesai</span></li>
@@ -59,8 +65,11 @@
                     </select>
                 </div>
                 <div>
-                    <label for="no_hp">nomor Hp<span class="text-red-500">*</span></label>
-                    <input class="rounded-md w-full" type="text" name="no_hp" id="no_hp">
+                    <label for="no_hp">Nomor HP<span class="text-red-500">*</span></label>
+                    <div class="flex">
+                        <span class="bg-gray-200 p-2 rounded-l-md">+62</span>
+                        <input class="rounded-r-md w-full pl-2" type="text" name="no_hp" id="no_hp" placeholder="8123456789" oninput="addCountryCode()">
+                    </div>
                 </div>
                 <div>
                     <label for="judul_pengaduan">Judul<span class="text-red-500">*</span></label>
@@ -141,3 +150,11 @@
 </div>
 
 @endsection
+<script>
+function addCountryCode() {
+    var input = document.getElementById('no_hp');
+    if (!input.value.startsWith('8')) {
+        input.value = input.value.replace(/^8*/, '8');
+    }
+}
+</script>

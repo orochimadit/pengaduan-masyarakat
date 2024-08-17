@@ -215,7 +215,7 @@
                                 <tr class="[&>td]:border [&>td]:p-2 text-center">
                                     <th><p class="">{{ $pengaduan->firstItem() + $index }}</p></th>
                                     <td><p class="">{{ date('d-m-Y', strtotime($i->tgl_pengaduan)) }}</p></td>   
-                                    <td>  <a href="https://wa.me/{{ $i->no_hp }}?text=Halo, kami dari admin ingin membahas pengaduan Anda mengenai '{{ $i->judul }}'."
+                                    <td>  <a href="https://wa.me/+62{{ $i->no_hp }}?text=Halo, kami dari admin ingin membahas pengaduan Anda mengenai '{{ $i->judul }}'."
             target="_blank" class="w-full btn btn-sm bg-gray-500 hover:bg-green-600">
             <i class="fa-brands fa-whatsapp"></i> {{ $i->no_hp }}
                                     {{-- <td><a href="/admin/user/detail/{{ $i->masyarakat_nik }}" class="underline">{{ $i->masyarakat_nik }}</a></td>            --}}

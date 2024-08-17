@@ -119,13 +119,13 @@
                 </div>
                 <p><span class="font-semibold">Isi:</span> {{ $detail->isi_laporan }}</p>
                 <div class="flex gap-5 mb-5">
-        <h4 class="font-semibold break-words">Nomor HP: {{ $detail->no_hp }}</h4>
-        <a href="https://wa.me/{{ $detail->no_hp }}" target="_blank" class="btn btn-sm bg-green-500 text-white">
-            <i class="fa-brands fa-whatsapp mr-2"></i>Hubungi via WhatsApp
-        </a>
-    </div>
+                    <h4 class="font-semibold break-words">Nomor HP: {{ $detail->no_hp }}</h4>
+                    <a href="https://wa.me/+62{{ $detail->no_hp }}" target="_blank" class="btn btn-sm bg-green-500 text-white">
+                        <i class="fa-brands fa-whatsapp mr-2"></i>Hubungi via WhatsApp
+                    </a>
+                </div>
             </div>
-            
+
         </div>
 
         <div class="bg-slate-200  w-full sm:w-[800px] mx-auto mb-5 rounded-lg border-2 border-slate-900 relative overflow-hidden">
@@ -168,8 +168,18 @@
                 <form class="flex" action="/pengaduan/me/{{ $detail->id }}/send-tanggapan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input class="border-none focus:ring-0 w-full rounded-b-md h-12  placeholder:text-slate-400" placeholder="Ketik Disini..." type="text" name="pesan">
-                    <input type="file" name="foto" accept="image/*" class="ml-2 mb-2 sm:mb-0">
-                    <button type="submit" class="py-2 px-3 bg-blue-600 hover:bg-blue-700 active:scale-90 active:bg-blue-800 text-white rounded-full"><i class="fa-regular fa-xl fa-paper-plane"></i></button>
+                    <!-- Tombol untuk membuka modal -->
+    <button type="button" onclick="document.getElementById('modal-file-upload').checked = true;" class="ml-2 mb-2 sm:mb-0 bg-blue-500 text-white py-2 px-4 rounded">
+        Pilih Foto
+    </button>
+
+    <!-- Input tersembunyi untuk menyimpan file yang dipilih -->
+    <input type="file" name="foto" id="fotoInput" accept="image/*" class="hidden">
+
+    <!-- Tombol Kirim -->
+    <button type="submit" class="py-2 px-3 bg-green-600 hover:bg-green-700 active:scale-90 active:bg-green-800 text-white rounded-full">
+        <i class="fa-regular fa-xl fa-paper-plane"></i> Kirim
+    </button>
                 </form>
             </div>
             @endif
@@ -184,4 +194,31 @@
     <a class="btn btn-lg bg-red-700 mt-5" href="/">Buat Pengaduan</a>
 </div>
 
+<!-- Modal untuk upload gambar -->
+<input type="checkbox" id="modal-file-upload" class="modal-toggle" />
+<div class="modal">
+    <div class="modal-box relative">
+        <label for="modal-file-upload" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <h3 class="text-lg font-bold">Upload Foto</h3>
+        <input type="file" id="fotoUpload" accept="image/*" class="w-full mt-4 border rounded p-2">
+        <div class="modal-action">
+            <label for="modal-file-upload" class="btn" onclick="simpanFoto()">Simpan</label>
+        </div>
+    </div>
+</div>
 @endsection
+<script>
+    function simpanFoto() {
+        const fotoUpload = document.getElementById('fotoUpload');
+        const fotoInput = document.getElementById('fotoInput');
+
+        // Menyalin file yang dipilih dari modal ke input file tersembunyi di form utama
+        if (fotoUpload.files && fotoUpload.files[0]) {
+            fotoInput.files = fotoUpload.files;
+            alert('Foto berhasil dipilih. Anda bisa mengirim formulir sekarang.');
+        } else {
+            alert('Silakan pilih foto sebelum menyimpan.');
+        }
+    }
+
+</script>
