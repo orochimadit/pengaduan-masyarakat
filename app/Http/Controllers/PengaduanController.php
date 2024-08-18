@@ -301,6 +301,7 @@ if ($countPengaduanHariIni >= 5) {
 
         $data = [
             'status' => $request->status_pengaduan,
+            'tgl_selesai'=>$request->tgl_selesai,
         ];
 
         Pengaduan::where('id', '=', $id)->update($data);
@@ -323,6 +324,7 @@ if ($countPengaduanHariIni >= 5) {
             'pengaduan_id' => $id,
             'tgl_tanggapan' => date('Y-m-d'),
             'tanggapan' => $tanggapan,
+            'tgl_selesai'=>$request->tgl_selesai,
             'petugas_id' => Auth::user()->nik,
         ]);
 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('isi_laporan');
             $table->text('foto');
             $table->enum('status', ['0', '1', '2']);
+            $table->date('tgl_selesai')->nullable();
             $table->timestamps();
         });
     }

@@ -62,36 +62,14 @@
             <figure class="bg-gray-300"><img class="h-[200px] sm:h-[350px] w-full object-contain" src="{{ $detail->foto !== NULL ? (asset('img_pengaduan/' . $detail->foto)) : asset('img/kosong.jpg') }}" alt="img_pengaduan" /></figure>
             <p class="bg-sky-600 p-1 font-semibold text-white text-center">Detail: </p>
             <div class="box-border p-3 min-h-[100px]">
-                <div class="flex gap-5 mb-5">
+                <div class="flex flex-wrap gap-5 mb-5 items-center">
                     <h4 class="font-semibold break-words">Tanggal Kejadian: {{ date('d-m-Y', strtotime($detail->tgl_pengaduan)) }}</h4>
                     <h4 class="font-semibold break-words">Lokasi: {{ $detail->kecamatan->kecamatan }}</h4>
-
-                    @if (Auth::user()->nik == $detail->masyarakat_nik && $title == 'Detail Pengaduan' && $detail->status == '0')
-
-                    <label for="modal-status" class="btn btn-sm bg-yellow-500"><i class="fa-solid fa-pen-to-square mr-3"></i> Edit Pengaduan</label>
-                    <input type="checkbox" id="modal-status" class="modal-toggle" />
-                    <div class="modal">
-                        <div class="modal-box relative">
-                            <h3 class="text-lg font-bold p-3 bg-red-700 mb-7 text-white rounded-md">Edit Pengaduan</h3>
-
-                            <form id="formEditPengaduan" action="/pengaduan/me/{{ $detail->id }}/edit" method="POST">
-                                @csrf
-
-                                <label for="tgl_kejadian">Tanggal Kejadian</label>
-                                <input class="w-full rounded-md" type="date" name="tgl_kejadian" id="tgl_kejadian" max="{{ date('Y-m-d') }}">
-
-                                <div class="modal-action">
-                                    <label for="modal-status" class="btn btn-sm">Batal</label>
-                                    <button type="submit" class="btn btn-sm bg-yellow-500 hover:bg-sky-6000">Edit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
+                    @if ($detail->status == 2 && !empty($detail->tgl_selesai))
+                    <h4 class="font-semibold break-words">Tanggal Selesai: {{ date('d-m-Y', strtotime($detail->tgl_selesai)) }}</h4>
                     @endif
 
                     @if (Auth::user()->lvl == 'admin' || Auth::user()->lvl == 'petugas')
-
                     <label for="modal-status" class="btn btn-sm bg-yellow-500"><i class="fa-solid fa-pen-to-square mr-3"></i> Edit Status</label>
                     <input type="checkbox" id="modal-status" class="modal-toggle" />
                     <div class="modal">
@@ -100,12 +78,18 @@
 
                             <form id="formEdit" action="/pengaduan/me/{{ $detail->id }}/edit-status" method="POST">
                                 @csrf
-                                <select name="status_pengaduan" class="w-full rounded-md" required>
+                                <select name="status_pengaduan" id="status_pengaduan" class="w-full rounded-md" required onchange="toggleTglSelesaiField()">
                                     <option value="" selected disabled>- PILIH -</option>
                                     <option value="0" {{ $detail->status == '0' ? 'selected' : '' }}>Belum Diproses</option>
                                     <option value="1" {{ $detail->status == '1' ? 'selected' : '' }}>Sedang Diproses</option>
                                     <option value="2" {{ $detail->status == '2' ? 'selected' : '' }}>Selesai</option>
                                 </select>
+
+                                <!-- Field untuk tgl_selesai -->
+                                <div id="tgl_selesai_field" class="mt-4 hidden">
+                                    <label for="tgl_selesai">Tanggal Selesai</label>
+                                    <input type="date" name="tgl_selesai" id="tgl_selesai" class="w-full rounded-md" max="{{ date('Y-m-d') }}">
+                                </div>
 
                                 <div class="modal-action">
                                     <label for="modal-status" class="btn btn-sm">Batal</label>
@@ -207,6 +191,7 @@
     </div>
 </div>
 @endsection
+
 <script>
     function simpanFoto() {
         const fotoUpload = document.getElementById('fotoUpload');
@@ -221,4 +206,19 @@
         }
     }
 
+    function toggleTglSelesaiField() {
+        const statusPengaduan = document.getElementById('status_pengaduan');
+        const tglSelesaiField = document.getElementById('tgl_selesai_field');
+
+        if (statusPengaduan.value == '2') {
+            tglSelesaiField.classList.remove('hidden');
+        } else {
+            tglSelesaiField.classList.add('hidden');
+        }
+    }
+
+    // Initial check to ensure field is hidden or shown correctly on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        toggleTglSelesaiField();
+    });
 </script>
