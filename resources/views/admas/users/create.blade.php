@@ -26,7 +26,7 @@
         <form action="{{ route('users.store') }}" method="POST" class="space-y-4">
             @csrf
             <div>
-                <label for="nik" class="block text-white font-semibold">NIK</label>
+                <label for="nik" class="block text-white font-semibold">NIP</label>
                 <input type="text" class="w-full rounded-md p-2 text-black" id="nik" name="nik" value="{{ old('nik') }}" required>
             </div>
             <div>

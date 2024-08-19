@@ -21,7 +21,7 @@
             <thead class="text-center">
                 <tr>
                     <th class="sm:w-[5%]">No.</th>
-                    <th class="sm:w-[15%]">NIK</th>
+                    <th class="sm:w-[15%]">NIP</th>
                     <th>Nama</th>
                     <th>Username</th>
                     <th>Email</th>

@@ -27,8 +27,8 @@
             @csrf
             @method('PUT')
             <div>
-                <label for="nik" class="block text-white font-semibold">NIK</label>
-                <input type="text" class="w-full rounded-md p-2 text-black" id="nik" name="nik" value="{{ old('nik', $user->nik) }}" required>
+                <label for="nik" class="block text-white font-semibold">NIP</label>
+                <input type="text" class="w-full rounded-md p-2 text-black" id="nik" name="nik" value="{{ old('nik', $user->nik) }}" required>nik
             </div>
             <div>
                 <label for="name" class="block text-white font-semibold">Nama</label>
