@@ -98,7 +98,7 @@
                                     <label for="tgl_akhir" class=" text-white">Tanggal Akhir: </label>
                                     <input class="w-full sm:w-auto rounded-md p-1 text-[15px]" type="date" name="tgl_akhir" id="tgl_akhir" value="{{ Session::get('tgl_akhir') }}">
                                 </div>
-    
+                        
                             </div>
                            
                             @if ($title == 'Seluruh Pengaduan')
@@ -112,7 +112,7 @@
                                     </select>
                                 </div>
                             @endif
-
+                       
                         </div>
                         
                     </div>
@@ -149,6 +149,46 @@
                     <img class="inline-block invert h-5 mx-auto" src="{{ asset('img/excel.png') }}" alt="excel.png"><span class="ml-3">Export</span>
                     </div>
                 </a>
+                     <!-- Tambahkan Dropdown Pilihan Bulan -->
+                       <div class="flex  gap-3 my-5">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                <div>
+                    <label for="bulan" class="text-white">Bulan: </label>
+                    <select class="w-full sm:w-auto rounded-md p-1 pr-10 text-[15px]" name="bulan" id="bulan">
+                        <option value="">- PILIH -</option>
+                        @for ($m = 1; $m <= 12; $m++)
+                            <option value="{{ $m }}" {{ Session::get('bulan') == $m ? 'selected' : '' }}>
+                                {{ date('F', mktime(0, 0, 0, $m, 10)) }}
+                            </option>
+                        @endfor
+                    </select>
+                </div>
+
+                <!-- Tambahkan Dropdown Pilihan Tahun -->
+                <div>
+                    <label for="tahun" class="text-white">Tahun: </label>
+                    <select class="w-full sm:w-auto rounded-md p-1 pr-10 text-[15px]" name="tahun" id="tahun">
+                        <option value="">- PILIH -</option>
+                        @for ($y = date('Y'); $y >= date('Y') - 5; $y--)
+                            <option value="{{ $y }}" {{ Session::get('tahun') == $y ? 'selected' : '' }}>
+                                {{ $y }}
+                            </option>
+                        @endfor
+                    </select>
+                </div>
+                </div></div>
+                 <a href="{{ route('pengaduan.exportPerBulan', [
+        'bulan' => request('bulan'),
+        'tahun' => request('tahun'),
+        'search' => request('search'),
+        'tgl_awal' => request('tgl_awal'),
+        'tgl_akhir' => request('tgl_akhir'),
+        'status' => request('status')
+    ]) }}">
+        <div class="rounded-t-md bg-blue-500 hover:bg-blue-600 active:bg-blue-700 p-2 text-center text-white mt-2">
+            <img class="inline-block invert h-5 mx-auto" src="{{ asset('img/excel.png') }}" alt="excel.png"><span class="ml-3">Export Per Bulan</span>
+        </div>
+    </a>
             @endif
 
         <div class="{{ Auth::user()->lvl == 'petugas' ? 'rounded-t-md' : '' }}  rounded-b-md overflow-auto">
@@ -215,7 +255,7 @@
                                 <tr class="[&>td]:border [&>td]:p-2 text-center">
                                     <th><p class="">{{ $pengaduan->firstItem() + $index }}</p></th>
                                     <td><p class="">{{ date('d-m-Y', strtotime($i->tgl_pengaduan)) }}</p></td>   
-                                    <td>  <a href="https://wa.me/+62{{ $i->no_hp }}?text=Halo, kami dari admin ingin membahas pengaduan Anda mengenai '{{ $i->judul }}'."
+                                    <td>  <a href="https://wa.me/+62{{ $i->no_hp }}?text=Salam Sehat! Hello, kami dari Admin e-Lapor Sehati akan menanggapi laporan Anda '{{ $i->judul }}'."
             target="_blank" class="w-full btn btn-sm bg-gray-500 hover:bg-green-600">
             <i class="fa-brands fa-whatsapp"></i> {{ $i->no_hp }}
                                     {{-- <td><a href="/admin/user/detail/{{ $i->masyarakat_nik }}" class="underline">{{ $i->masyarakat_nik }}</a></td>            --}}

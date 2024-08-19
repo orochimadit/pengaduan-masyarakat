@@ -147,8 +147,7 @@ class adminController extends Controller
         if (isset($request->search)) {
             $pengaduan = Pengaduan::where(function ($query) use ($request) {
                 $query->orWhere('judul', 'like', '%' . $request->search . '%')
-                    ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
-                    ->orWhere('masyarakat_nik', 'like', '%' . $request->search . '%');
+                    ->orWhere('isi_laporan', 'like', '%' . $request->search . '%');
             })->orderBy('tgl_pengaduan', 'desc')->paginate(1000);
         }
 
@@ -322,7 +321,33 @@ class adminController extends Controller
             'pengaduan' => $pengaduan,
         ]);
     }
-
+    public function exportPerBulan(Request $request)
+    {
+        $query = Pengaduan::query();
+    
+        // Filter berdasarkan bulan dan tahun
+        if ($request->filled('bulan')) {
+            $query->whereMonth('tgl_pengaduan', $request->bulan);
+        }
+    
+        if ($request->filled('tahun')) {
+            $query->whereYear('tgl_pengaduan', $request->tahun);
+        }
+    
+        // Tambahkan filter pencarian jika ada
+        if ($request->filled('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->orWhere('judul', 'like', '%' . $request->search . '%')
+                    ->orWhere('isi_laporan', 'like', '%' . $request->search . '%')
+                    ->orWhere('no_hp', 'like', '%' . $request->search . '%');
+            });
+        }
+    
+        $pengaduan = $query->orderBy('tgl_pengaduan', 'desc')->get();
+    
+        return view('admas/export-excel', compact('pengaduan', 'request'));
+    }
+    
     public function show_belum(Request $request)
     {
         Session::flash('search', $request->search);

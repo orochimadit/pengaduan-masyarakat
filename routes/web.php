@@ -63,6 +63,7 @@ Route::get('/admin/seluruh-pengaduan/export-excel', [adminController::class, 'ex
 Route::get('/admin/pengaduan-belum-diproses/export-excel', [adminController::class, 'export_belum'])->middleware('isAdmin');
 Route::get('/admin/pengaduan-sedang-diproses/export-excel', [adminController::class, 'export_sedang'])->middleware('isAdmin');
 Route::get('/admin/pengaduan-selesai/export-excel', [adminController::class, 'export_selesai'])->middleware('isAdmin');
+Route::get('/admin/pengaduan/export-perbulan', [adminController::class, 'exportPerBulan'])->name('pengaduan.exportPerBulan');
 
 // Rekapitulasi Pengguna
 Route::get('/admin/user', [UsersController::class, 'show'])->middleware('isAdmin');
