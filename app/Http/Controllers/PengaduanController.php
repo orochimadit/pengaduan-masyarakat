@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PengaduanBaruMail;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class PengaduanController extends Controller
@@ -60,7 +62,7 @@ class PengaduanController extends Controller
             'kecamatan' => 'required',
             'judul_pengaduan' => 'required',
             'isi_laporan' => 'required',
-            'foto' => 'mimes:jpg,jpeg,png',
+            'foto' => 'mimes:jpg,jpeg,png|max:2048',
         ], [
             'tgl_pengaduan.required' => 'Tanggal Laporan Wajib ',
             'kecamatan.required' => 'Kecamatan Wajib Diisi',
@@ -98,7 +100,15 @@ if ($countPengaduanHariIni >= 5) {
             'no_hp' => $request->no_hp,
         ];
 
-        Pengaduan::create($data);
+       $pengaduan = Pengaduan::create($data);
+            // Mengambil semua pengguna dengan peran "petugas"
+    $petugas = User::where('lvl', 'petugas')->get();
+
+    // Mengirim email kepada semua petugas
+    foreach ($petugas as $user) {
+        Mail::to($user->email)->send(new PengaduanBaruMail($pengaduan));
+    }
+
         return  back()->with('success', 'Berhasil Melapor');
     }
 

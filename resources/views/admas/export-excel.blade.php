@@ -45,7 +45,7 @@
             <td style="text-align: center" width="300">{{ $i->judul }}</td>
             <td style="text-align: center" width="500">{{ $i->isi_laporan }}</td>
             <td style="text-align: center" width="80">{{ statusPengaduan($i) }}</td>
-            <td style="text-align: center" width="80">+62{{ $i->no_hp }}</td>
+            <td style="text-align: center" width="80">{{ "'+62" . $i->no_hp }}</td>
         </tr>
     @endforeach
 </table>

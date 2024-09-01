@@ -49,7 +49,7 @@ class UsersController extends Controller
     {
          // Validasi data input
          $validator = Validator::make($request->all(), [
-            'nik' => 'required|string|size:16|unique:users',
+            'nik' => 'required|string|max:20|unique:users',
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
