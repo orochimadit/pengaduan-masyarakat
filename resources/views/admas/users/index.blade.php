@@ -65,6 +65,55 @@
     @if ($users->isEmpty())
         <p class="text-center text-2xl font-semibold p-5 rounded-b-md bg-slate-700 text-white">- Tidak ada Pengguna -</p>
     @endif
+
+    <div class="mt-10">
+        <h3 class="text-center text-white text-4xl font-bold before:inline-block before:h-10 before:absolute before:-ml-4 before:w-3 before:bg-red-700">List Pengguna Terhapus</h3>
+        
+        <div class="rounded-b-md overflow-auto mt-5">
+            <table class="table table-auto table-zebra table-compact w-full bg-white overflow-auto mb-5">
+                <thead class="text-center">
+                    <tr>
+                        <th class="sm:w-[5%]">No.</th>
+                        <th class="sm:w-[15%]">NIP</th>
+                        <th>Nama</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>No HP</th>
+                        <th class="sm:w-[10%]">Level</th>
+                        <th class="sm:w-[15%]">Dihapus Pada</th>
+                        <th class="sm:w-[10%]">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($deletedUsers as $index => $user)
+                        <tr class="[&>td]:border [&>td]:p-2 text-center">
+                            <th>{{ $deletedUsers->firstItem() + $index }}</th>
+                            <td>{{ $user->nik }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->telp }}</td>
+                            <td>{{ ucfirst($user->lvl) }}</td>
+                            <td>{{ $user->deleted_at->format('d-m-Y H:i') }}</td>
+                            <td class="">
+                                <form action="{{ route('users.restore', $user->id) }}" method="POST" class="inline">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-sm bg-green-600 hover:bg-green-700 text-white mt-1">Restore</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            {{ $deletedUsers->links() }}
+        </div>
+
+        @if ($deletedUsers->isEmpty())
+            <p class="text-center text-2xl font-semibold p-5 rounded-b-md bg-slate-700 text-white">- Tidak ada Pengguna Terhapus -</p>
+        @endif
+    </div>
 </div>
 
 @endsection

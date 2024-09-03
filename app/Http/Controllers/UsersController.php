@@ -22,7 +22,8 @@ class UsersController extends Controller
     {
         $title = 'Daftar Pengguna'; 
         $users = User::with('kecamatan')->paginate(10); // Menampilkan data users dengan kecamatan
-        return view('admas.users.index', compact('users','title'));
+        $deletedUsers = User::onlyTrashed()->with('kecamatan')->paginate(10);
+        return view('admas.users.index', compact('users','title','deletedUsers'));
     }
 
     
@@ -301,7 +302,7 @@ class UsersController extends Controller
     {
         // Validasi data input
         $validator = Validator::make($request->all(), [
-            'nik' => 'required|string|size:16|unique:users,nik,' . $user->id,
+            'nik' => 'required|string|max:20|unique:users,nik,' . $user->id,
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username,' . $user->id,
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -342,4 +343,13 @@ class UsersController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', 'Akun berhasil dihapus.');
     }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+
+        return redirect()->route('users.index')->with('success', 'Pengguna berhasil dipulihkan');
+    }
+
 }
